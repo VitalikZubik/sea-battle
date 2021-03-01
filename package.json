@@ -1,0 +1,31 @@
+{
+  "name": "sea_battle",
+  "version": "1.0.0",
+  "description": "game sea battle",
+  "main": "index.js",
+  "scripts": {
+    "dev": " webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitalikZubik/sea-battle.git"
+  },
+  "keywords": [
+    "js",
+    "webpack",
+    "git",
+    "css/less",
+    "html"
+  ],
+  "author": "Vitalik <vitalik_zubik1992@mail.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VitalikZubik/sea-battle/issues"
+  },
+  "homepage": "https://github.com/VitalikZubik/sea-battle#readme",
+  "devDependencies": {
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
