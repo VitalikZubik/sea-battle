@@ -129,19 +129,19 @@ export const MechanicsFight = {
       function activateShotUser() {
          if (this.classList.contains('activeOneDeckComputerShip')) {
             this.style.backgroundColor = 'red';
-            this.classList.add('hit');
+            this.classList.add('hitOneDeck');
             mechanicsFight.computerShips.oneDeck.splice(this, 1);
             drawMissesAroundKilledSingleDeckComputerShips();
 
          } else if (this.classList.contains('activeTwoDeckComputerShip')) {
             this.style.backgroundColor = 'red';
-            this.classList.add('hit');
+            this.classList.add('hitTwoDeck');
             mechanicsFight.computerShips.twoDeck.splice(this, 1);
             drawMissesAroundKilledDoubleDeckComputerShips();
 
          } else if (this.classList.contains('activeThreeDeckComputerShip')) {
             this.style.backgroundColor = 'red';
-            this.classList.add('hit');
+            this.classList.add('hitThreeDeck');
             mechanicsFight.computerShips.threeDeck.splice(this, 1);
             drawMissesAroundKilledThreeDeckComputerShip();
 

@@ -14,17 +14,27 @@ const computerMapDivs = {
 };
 
 // removeShipHitClass - функция удаления класса у убитых кораблей компьютера, после рисования миссов вокруг корабля.
-function removeShipHitClass() {
+function removeShipHitClass(typeShip) {
    arrayComputerCells.forEach(ship => {
-      if (ship.classList.contains('hit')) {
-         ship.classList.remove('hit');
-      }
+      if(typeShip === 1) {
+         if (ship.classList.contains('hitOneDeck')) {
+            ship.classList.remove('hitOneDeck');
+         } 
+      } else if (typeShip === 2) {
+         if (ship.classList.contains('hitTwoDeck')) {
+            ship.classList.remove('hitTwoDeck');
+         }
+      } else if (typeShip === 3) {
+         if (ship.classList.contains('hitThreeDeck')) {
+            ship.classList.remove('hitThreeDeck');
+         } 
+      }      
    });
 }
 
 // drawMissesAroundKilledSingleDeckComputerShips - функция для отрисовки промохов вокруг убитого однопалубного корабля компьютера.
 export function drawMissesAroundKilledSingleDeckComputerShips() {
-   const killedShip = arrayComputerCells.find(element => element.classList.contains('hit')),
+   const killedShip = arrayComputerCells.find(element => element.classList.contains('hitOneDeck')),
       coordinates = killedShip.id.split('-'),
       y = Number(coordinates[1]),
       rawX = Number(coordinates[2]),
@@ -63,7 +73,7 @@ export function drawMissesAroundKilledSingleDeckComputerShips() {
          computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
          computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-         removeShipHitClass();
+         removeShipHitClass(1);
 
       } else if (y === 1 && x === 0) {
          computerCellsMap[y][x + 1] = 'missed';
@@ -78,7 +88,7 @@ export function drawMissesAroundKilledSingleDeckComputerShips() {
          computerMapDivs[y + 1][x + 1].innerHTML = `<div class='missed'></div>`;
          computerMapDivs[y + 1][x].innerHTML = `<div class='missed'></div>`;
 
-         removeShipHitClass();
+         removeShipHitClass(1);
 
       } else if (y === 1 && x > 0 && x < 5) {
          computerCellsMap[y][x + 1] = 'missed';
@@ -99,7 +109,7 @@ export function drawMissesAroundKilledSingleDeckComputerShips() {
          computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
          computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-         removeShipHitClass();
+         removeShipHitClass(1);
 
       } else if (y === 1 && x === 5) {
          computerCellsMap[y + 1][x] = 'missed';
@@ -114,7 +124,7 @@ export function drawMissesAroundKilledSingleDeckComputerShips() {
          computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
          computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-         removeShipHitClass();
+         removeShipHitClass(1);
 
       } else if (y > 1 && y < 6 && x === 5) {
          computerCellsMap[y + 1][x] = 'missed';
@@ -135,7 +145,7 @@ export function drawMissesAroundKilledSingleDeckComputerShips() {
          computerMapDivs[y - 1][x - 1].innerHTML = `<div class='missed'></div>`;
          computerMapDivs[y - 1][x].innerHTML = `<div class='missed'></div>`;
 
-         removeShipHitClass();
+         removeShipHitClass(1);
 
       } else if (y === 6 && x === 5) {
          computerCellsMap[y][x - 1] = 'missed';
@@ -150,7 +160,7 @@ export function drawMissesAroundKilledSingleDeckComputerShips() {
          computerMapDivs[y - 1][x - 1].innerHTML = `<div class='missed'></div>`;
          computerMapDivs[y - 1][x].innerHTML = `<div class='missed'></div>`;
 
-         removeShipHitClass();
+         removeShipHitClass(1);
 
       } else if (y === 6 && x > 0 && x < 5) {
          computerCellsMap[y][x - 1] = 'missed';
@@ -171,7 +181,7 @@ export function drawMissesAroundKilledSingleDeckComputerShips() {
          computerMapDivs[y - 1][x + 1].innerHTML = `<div class='missed'></div>`;
          computerMapDivs[y][x + 1].innerHTML = `<div class='missed'></div>`;
 
-         removeShipHitClass();
+         removeShipHitClass(1);
 
       } else if (y === 6 && x === 0) {
          computerCellsMap[y - 1][x] = 'missed';
@@ -186,7 +196,7 @@ export function drawMissesAroundKilledSingleDeckComputerShips() {
          computerMapDivs[y - 1][x + 1].innerHTML = `<div class='missed'></div>`;
          computerMapDivs[y][x + 1].innerHTML = `<div class='missed'></div>`;
 
-         removeShipHitClass();
+         removeShipHitClass(1);
 
       } else if (y > 1 && y < 6 && x === 0) {
          computerCellsMap[y - 1][x] = 'missed';
@@ -207,14 +217,14 @@ export function drawMissesAroundKilledSingleDeckComputerShips() {
          computerMapDivs[y + 1][x + 1].innerHTML = `<div class='missed'></div>`;
          computerMapDivs[y + 1][x].innerHTML = `<div class='missed'></div>`;
 
-         removeShipHitClass();
+         removeShipHitClass(1);
       }
    }
 }
 
 // drawMissesAroundKilledDoubleDeckComputerShips - функция для отрисовки промохов вокруг убитого двухпалубного корабля компьютера.
 export function drawMissesAroundKilledDoubleDeckComputerShips() {
-   const killedShip = arrayComputerCells.find(element => element.classList.contains('hit')),
+   const killedShip = arrayComputerCells.find(element => element.classList.contains('hitTwoDeck')),
       coordinates = killedShip.id.split('-'),
       y = Number(coordinates[1]),
       rawX = Number(coordinates[2]),
@@ -258,7 +268,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 1 && x === 0) {
             computerCellsMap[y][x + 2] = 'missed';
@@ -276,7 +286,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y + 1][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 1][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 1 && x > 0 && x < 4) {
             computerCellsMap[y][x + 2] = 'missed';
@@ -300,7 +310,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 1 && x === 4) {
             computerCellsMap[y + 1][x + 1] = 'missed';
@@ -318,7 +328,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y > 1 && y < 6 && x === 0) {
             computerCellsMap[y - 1][x] = 'missed';
@@ -345,7 +355,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y + 1][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 1][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y > 1 && y < 6 && x === 4) {
             computerCellsMap[y + 1][x + 1] = 'missed';
@@ -372,7 +382,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y - 1][x].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y - 1][x + 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 6 && x === 4) {
             computerCellsMap[y][x - 1] = 'missed';
@@ -390,7 +400,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y - 1][x].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y - 1][x + 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 6 && x > 0 && x < 4) {
             computerCellsMap[y][x - 1] = 'missed';
@@ -414,7 +424,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y - 1][x + 2].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x + 2].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 6 && x === 0) {
             computerCellsMap[y - 1][x] = 'missed';
@@ -432,7 +442,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y - 1][x + 2].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x + 2].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
          }
 
       } else if (killedShip.classList.contains('vertical')) {
@@ -470,7 +480,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 1 && x === 0) {
             computerCellsMap[y][x + 1] = 'missed';
@@ -488,7 +498,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y + 2][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 2][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 1 && x > 0 && x < 5) {
             computerCellsMap[y][x + 1] = 'missed';
@@ -515,7 +525,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 1 && x === 5) {
             computerCellsMap[y][x - 1] = 'missed';
@@ -533,7 +543,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y + 2][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 2][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y > 1 && y < 5 && x === 5) {
             computerCellsMap[y + 2][x] = 'missed';
@@ -557,7 +567,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y - 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y - 1][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 5 && x === 5) {
             computerCellsMap[y + 1][x - 1] = 'missed';
@@ -575,7 +585,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y - 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y - 1][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 5 && x > 0 && x < 5) {
             computerCellsMap[y + 1][x - 1] = 'missed';
@@ -602,7 +612,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 1][x + 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y === 5 && x === 0) {
             computerCellsMap[y - 1][x] = 'missed';
@@ -620,7 +630,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 1][x + 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
 
          } else if (y > 1 && y < 5 && x === 0) {
             computerCellsMap[y - 1][x] = 'missed';
@@ -644,7 +654,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
             computerMapDivs[y + 2][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 2][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(2);
          }
       }
    }
@@ -652,7 +662,7 @@ export function drawMissesAroundKilledDoubleDeckComputerShips() {
 
 // drawMissesAroundKilledThreeDeckComputerShip - функция для отрисовки промохов вокруг убитого трехпалубного корабля компьютера. 
 export function drawMissesAroundKilledThreeDeckComputerShip() {
-   const killedShip = arrayComputerCells.find(element => element.classList.contains('hit')),
+   const killedShip = arrayComputerCells.find(element => element.classList.contains('hitThreeDeck')),
       coordinates = killedShip.id.split('-'),
       y = Number(coordinates[1]),
       rawX = Number(coordinates[2]),
@@ -700,7 +710,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 1 && x === 0) {
             computerCellsMap[y][x + 3] = 'missed';
@@ -721,7 +731,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y + 1][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 1][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 1 && x > 0 && x < 3) {
             computerCellsMap[y][x + 3] = 'missed';
@@ -748,7 +758,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y > 1 && y < 6 && x === 3) {
             computerCellsMap[y + 1][x + 2] = 'missed';
@@ -781,7 +791,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y - 1][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y - 1][x + 2].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 1 && x === 3) {
             computerCellsMap[y + 1][x + 2] = 'missed';
@@ -802,7 +812,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 6 && x === 3) {
             computerCellsMap[y][x - 1] = 'missed';
@@ -823,7 +833,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y - 1][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y - 1][x + 2].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 6 && x > 0 && x < 3) {
             computerCellsMap[y][x - 1] = 'missed';
@@ -850,7 +860,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y - 1][x + 3].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x + 3].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 6 && x === 0) {
             computerCellsMap[y - 1][x] = 'missed';
@@ -871,7 +881,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y - 1][x + 3].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x + 3].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y > 0 && y < 6 && x === 0) {
             computerCellsMap[y + 1][x] = 'missed';
@@ -904,7 +914,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y - 1][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y - 1][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
          }
       } else if (killedShip.classList.contains('vertical')) {
          if (y > 1 && y < 4 && x > 0 && x < 5) {
@@ -947,7 +957,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 1 && x === 0) {
             computerCellsMap[y][x + 1] = 'missed';
@@ -968,7 +978,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y + 3][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 3][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 1 && x > 0 && x < 5) {
             computerCellsMap[y][x + 1] = 'missed';
@@ -1001,7 +1011,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 1 && x === 5) {
             computerCellsMap[y + 3][x] = 'missed';
@@ -1022,7 +1032,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y + 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y][x - 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y > 1 && y < 4 && x === 5) {
             computerCellsMap[y + 3][x] = 'missed';
@@ -1049,7 +1059,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y - 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y - 1][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 4 && x === 5) {
             computerCellsMap[y + 2][x - 1] = 'missed';
@@ -1070,7 +1080,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y - 1][x - 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y - 1][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 4 && x > 0 && x < 5) {
             computerCellsMap[y + 2][x - 1] = 'missed';
@@ -1103,7 +1113,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y + 1][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 2][x + 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y === 4 && x === 0) {
             computerCellsMap[y - 1][x] = 'missed';
@@ -1124,7 +1134,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y + 1][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 2][x + 1].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
 
          } else if (y > 1 && y < 4 && x === 0) {
             computerCellsMap[y - 1][x] = 'missed';
@@ -1151,7 +1161,7 @@ export function drawMissesAroundKilledThreeDeckComputerShip() {
             computerMapDivs[y + 3][x + 1].innerHTML = `<div class='missed'></div>`;
             computerMapDivs[y + 3][x].innerHTML = `<div class='missed'></div>`;
 
-            removeShipHitClass();
+            removeShipHitClass(3);
          }
       }
    }
