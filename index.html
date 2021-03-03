@@ -2,11 +2,189 @@
 <html lang="ru">
 <head>
    <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Sea Battle</title>
+   <link rel="stylesheet" href="./src/css/style.css">
 </head>
 <body>
-   
+   <header>   
+      <h1>Морской бой.</h1>
+   </header>
+   <div class="container">
+      <div class="winner">
+         <div class="close_winner">X</div>
+         <p>Вы победили!!!</p>
+      </div>
+      <div class="loser">
+         <div class="close_loser">X</div>
+         <p>Вы проиграли!!!</p>
+      </div>
+      <div class="playingField">
+         <div class="userInformation">
+            <p>Информация об игроке.</p>
+            <p class="user_name">Имя:</p>
+            <p class="move_user"></p>
+         </div>
+         <div class="horizontal_markup">            
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>            
+         </div>
+         <div class="vertical_markup">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div> 
+         </div>
+         <div class="fieldGames user">           
+            <div id="p-1-1" class="player_cell"></div>
+            <div id="p-1-2" class="player_cell"></div>
+            <div id="p-1-3" class="player_cell"></div>
+            <div id="p-1-4" class="player_cell"></div>
+            <div id="p-1-5" class="player_cell"></div>
+            <div id="p-1-6" class="player_cell"></div>
+            <div id="p-2-1" class="player_cell"></div>
+            <div id="p-2-2" class="player_cell"></div>
+            <div id="p-2-3" class="player_cell"></div>
+            <div id="p-2-4" class="player_cell"></div>
+            <div id="p-2-5" class="player_cell"></div>
+            <div id="p-2-6" class="player_cell"></div>
+            <div id="p-3-1" class="player_cell"></div>
+            <div id="p-3-2" class="player_cell"></div>
+            <div id="p-3-3" class="player_cell"></div>
+            <div id="p-3-4" class="player_cell"></div>
+            <div id="p-3-5" class="player_cell"></div>
+            <div id="p-3-6" class="player_cell"></div>
+            <div id="p-4-1" class="player_cell"></div>
+            <div id="p-4-2" class="player_cell"></div>
+            <div id="p-4-3" class="player_cell"></div>
+            <div id="p-4-4" class="player_cell"></div>
+            <div id="p-4-5" class="player_cell"></div>
+            <div id="p-4-6" class="player_cell"></div>
+            <div id="p-5-1" class="player_cell"></div>
+            <div id="p-5-2" class="player_cell"></div>
+            <div id="p-5-3" class="player_cell"></div>
+            <div id="p-5-4" class="player_cell"></div>
+            <div id="p-5-5" class="player_cell"></div>
+            <div id="p-5-6" class="player_cell"></div>
+            <div id="p-6-1" class="player_cell"></div>
+            <div id="p-6-2" class="player_cell"></div>
+            <div id="p-6-3" class="player_cell"></div> 
+            <div id="p-6-4" class="player_cell"></div> 
+            <div id="p-6-5" class="player_cell"></div> 
+            <div id="p-6-6" class="player_cell"></div>             
+         </div>
+      </div>
+      <div class="menuGame">
+         <div class="informationField">
+            <span class="one_deck">3 x</span>
+            <div id="1" class="oneDeck"></div>
+            <span class="two_deck">2 x</span>
+            <div id="2" class="twoDeck">
+               <div class="deck"></div>
+               <div class="deck"></div>
+            </div>
+            <span class="three_deck">1 x</span>
+            <div id="3" class="threeDeck">
+               <div class="deck"></div>
+               <div class="deck"></div>
+               <div class="deck"></div>
+            </div>
+            <!-- <button class="btn_delete">&#x1F5D1;&#xFE0F;</button>
+            <button class="btn_random">Случайная расстановка</button> -->
+         </div>
+         <div class="btn_group">
+            <button  class="btn start_game">Начать игру</button>
+            <!-- <button class="btn next_round">Следующий раунд</button>
+            <button class="btn start_over">Начать заново</button> -->
+         </div>
+         <div class="field_count_ship">
+            <div class="user_ship_1">0</div>
+            <div class="user_ship_2">0</div>
+            <div class="user_ship_3">0</div>
+            <div class="ship_deck_1"></div>
+            <div class="ship_deck_2">
+               <div class="deck"></div>
+               <div class="deck"></div>
+            </div>
+            <div class="ship_deck_3">
+               <div class="deck"></div>
+               <div class="deck"></div>
+               <div class="deck"></div>
+            </div>
+            <div class="computer_ship_1">0</div>
+            <div class="computer_ship_2">0</div>
+            <div class="computer_ship_3">0</div>
+         </div>
+      </div>
+      <div class="playingField">
+         <div class="userInformation">
+            <p>Информация об игроке.</p>
+            <p>Имя: Компьютер.</p>
+            <p class="move_computer"></p>
+         </div>
+         <div class="horizontal_markup">            
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>            
+         </div>
+         <div class="vertical_markup">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div> 
+         </div>
+         <div class="fieldGames computer">
+            <div id='c-1-1' class="computer_cell"></div>
+            <div id='c-1-2' class="computer_cell"></div>
+            <div id='c-1-3' class="computer_cell"></div>
+            <div id='c-1-4' class="computer_cell"></div>
+            <div id='c-1-5' class="computer_cell"></div>
+            <div id='c-1-6' class="computer_cell"></div>
+            <div id='c-2-1' class="computer_cell"></div>
+            <div id='c-2-2' class="computer_cell"></div>
+            <div id='c-2-3' class="computer_cell"></div>
+            <div id='c-2-4' class="computer_cell"></div>
+            <div id='c-2-5' class="computer_cell"></div>
+            <div id='c-2-6' class="computer_cell"></div>
+            <div id='c-3-1' class="computer_cell"></div>
+            <div id='c-3-2' class="computer_cell"></div>
+            <div id='c-3-3' class="computer_cell"></div>
+            <div id='c-3-4' class="computer_cell"></div>
+            <div id='c-3-5' class="computer_cell"></div>
+            <div id='c-3-6' class="computer_cell"></div>
+            <div id='c-4-1' class="computer_cell"></div>
+            <div id='c-4-2' class="computer_cell"></div>
+            <div id='c-4-3' class="computer_cell"></div>
+            <div id='c-4-4' class="computer_cell"></div>
+            <div id='c-4-5' class="computer_cell"></div>
+            <div id='c-4-6' class="computer_cell"></div>
+            <div id='c-5-1' class="computer_cell"></div>
+            <div id='c-5-2' class="computer_cell"></div>
+            <div id='c-5-3' class="computer_cell"></div>
+            <div id='c-5-4' class="computer_cell"></div>
+            <div id='c-5-5' class="computer_cell"></div>
+            <div id='c-5-6' class="computer_cell"></div>
+            <div id='c-6-1' class="computer_cell"></div>
+            <div id='c-6-2' class="computer_cell"></div>
+            <div id='c-6-3' class="computer_cell"></div>
+            <div id='c-6-4' class="computer_cell"></div>
+            <div id='c-6-5' class="computer_cell"></div>
+            <div id='c-6-6' class="computer_cell"></div>
+         </div>
+      </div>
+   </div>
+   <footer></footer>
+   <script src="./dist/bundle.js"></script>
 </body>
 </html>
