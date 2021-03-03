@@ -1,0 +1,196 @@
+//main: ../style.less
+
+.menuGame {
+   display: grid;
+   grid-template-columns: minmax(260px, 1fr);
+   grid-template-rows: 1.3fr 0.1fr 0.9fr ;
+   row-gap: 10px;
+   
+   .informationField {
+      width: 100%;
+      height: 100%;
+      border: @borderBlack;
+      box-shadow: @shadowField;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-template-rows: repeat(3, 50px) 40px;
+      row-gap: 25px;
+      padding: 10px;
+      
+      span {
+         display: grid;
+         font-size: 18px;
+         .alignCenter ();
+      }
+   
+      div {
+         height: 100%;
+         border: @borderBlack;
+         background-color: @colorShip;
+      }
+
+      .targetShip {
+         outline: 3px solid red;
+      }
+   
+      .oneDeck {
+         width: 33.3%;
+      }
+   
+      .twoDeck{
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         width: 66.6%;
+      }
+   
+      .threeDeck {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         width: 100%;
+      }
+      
+      .oneDeck,
+      .twoDeck,
+      .threeDeck {
+         cursor: pointer;
+      }
+      
+      .deck {
+         border: 1px dashed rgba(0, 0, 0, 0.2);
+      }
+   }
+   
+   .btn_delete {
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+      background-color: @btnColor;
+      justify-self: start;
+      box-shadow: @btnShanow;
+   }
+   
+   .btn_random {
+      font-size: 17px;
+      padding: 0;
+      margin: 0;
+      border: @borderBlack;
+      background-color: @btnColor;
+      box-shadow: @btnShanow;
+   }
+    
+   .btn {
+      width: 100%;
+      height: 50px;
+      font-size: 18px;  
+      background-color: @btnColor;
+      box-shadow: @btnShanow;
+      border: @borderBlack;
+   }
+      
+   .next_round {
+      border-left: @borderBlack;
+      border-right: @borderBlack;
+   }
+   
+   .start_over {
+      border: @borderBlack;
+      border-radius: 0 0 8px 8px;
+   }
+
+   .field_count_ship {
+      display: grid;
+      grid-template-columns: 0.7fr 2fr 0.7fr;
+      grid-template-rows: repeat(3, 1fr);
+      border: @borderBlack;
+      gap: 5px;
+      .alignCenter ();
+      box-shadow: @shadowField;
+      padding: 10px;
+
+      .user_ship_1 {
+         grid-column: 1;
+         grid-row: 1; 
+         display: grid;
+         .alignCenter (); 
+         font-size: 20px;
+      }
+
+      .user_ship_2 {
+         grid-column: 1;
+         grid-row: 2;
+         display: grid;
+         .alignCenter ();
+         font-size: 20px;       
+      }
+
+      .user_ship_3 {
+         grid-column: 1;
+         grid-row: 3;
+         display: grid;
+         .alignCenter ();
+         font-size: 20px;       
+      }
+
+      .computer_ship_1 {
+         grid-column: 3;
+         grid-row: 1;
+         display: grid;
+         .alignCenter ();
+         font-size: 20px;      
+      }
+
+      .computer_ship_2 {
+         grid-column: 3;
+         grid-row: 2;
+         display: grid;
+         .alignCenter ();
+         font-size: 20px;        
+      }
+
+      .computer_ship_3 {
+         grid-column: 3;
+         grid-row: 3;
+         display: grid;
+         .alignCenter (); 
+         font-size: 20px;       
+      }
+
+      .ship_deck_1 {
+         grid-column: 2;
+         grid-row: 1;
+         background-color: @colorShip;
+         width: 50px;
+         height: 100%;
+         border: @borderBlack;
+         display: grid;
+      }
+
+      .ship_deck_2 {
+         grid-column: 2;
+         grid-row: 2;
+         background-color: @colorShip;
+         width: 100px;
+         height: 100%;
+         border: @borderBlack;
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .ship_deck_3 {
+         grid-column: 2;
+         grid-row: 3;
+         background-color: @colorShip;
+         width: 150px;
+         height: 100%;
+         border: @borderBlack;
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+      }
+
+      .deck {
+         border: 1px dashed rgba(0, 0, 0, 0.2);
+      }
+   }
+}
+ 
+ 

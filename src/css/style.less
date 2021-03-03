@@ -1,0 +1,100 @@
+//compress: false
+
+*{padding: 0;margin: 0;border: 0;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:active{outline: none;}
+html,body{height:100%;width:100%;font-size:100%;line-height:1;font-size:14px;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+input,button,textarea{font-family:inherit;}
+button{cursor: pointer;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
+
+@import "vars";
+@import "mixins";
+
+body {
+   background-color: rgb(109, 118, 252);
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+   text-align: center;
+
+   h1 {
+      font-size: 45px;
+      font-weight: 700;
+      font-style: italic;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height:60px;
+   }
+}
+
+.container {
+   display: grid;
+   grid-template-columns:2fr 1fr 2fr;
+
+   .backgroundGradient();
+   border: 1px dashed black;
+
+   .winner {
+      position: absolute;
+      display: grid;
+      grid-template-rows: 1fr;
+      justify-items: center;
+      align-items: center;     
+      width: 300px;
+      height: 200px;
+      top: 30%;
+      left: 38%;
+      background-color: cornflowerblue;
+      border: 1px solid black;
+      display: none; 
+
+      .close_winner {
+         position: absolute;
+         top: 5px;
+         right: 5px;
+         cursor: pointer;
+         font-size: 20px;
+         font-weight: 700;
+      }
+
+      p {
+         font-size: 30px;
+         font-weight: 700;                 
+      }
+   }
+
+   .loser {
+      position: absolute;
+      display: grid;
+      grid-template-rows: 1fr;
+      justify-items: center;
+      align-items: center;       
+      width: 300px;
+      height: 200px;
+      top: 30%;
+      left: 38%;
+      background-color: cornflowerblue;
+      border: 1px solid black;
+      display: none;
+
+      .close_loser {
+         position: absolute;
+         top: 5px;
+         right: 5px;
+         cursor: pointer;
+         font-size: 20px;
+         font-weight: 700;
+      }
+      
+      p {
+         font-size: 30px;
+         font-weight: 700;
+      }
+   }
+}
+
+@import "./blocks/games_field";
+@import "./blocks/menu_game";
+
+

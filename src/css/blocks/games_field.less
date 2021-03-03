@@ -1,0 +1,84 @@
+//main: ../style.less
+
+.playingField {
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns:45px minmax(360px, 1fr);
+   grid-template-rows: 1fr 0.3fr minmax(360px,3fr);
+
+   .userInformation {
+      margin: 0 auto;
+      grid-column: 2;
+      
+      p {
+         font-size: 20px;
+         font-weight: 600;
+         line-height: 30px;
+      }
+      .move_user,
+      .move_computer {
+         font-size: 25px;
+         font-weight: 700;
+      }
+   }
+
+   .horizontal_markup {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-column: 2;
+      .alignCenter ();
+      font-size: 18px;
+   }
+
+   .vertical_markup {
+      display: grid;
+      grid-template-rows: repeat(6, 1fr);
+      .alignCenter ();
+      font-size: 18px;
+   }
+
+   .fieldGames {
+      border: @borderBlack;
+      box-shadow: @shadowField;
+      width: 100%;
+      display: grid;
+      grid-template-rows: repeat(6, 1fr);
+      grid-template-columns: repeat(6, 1fr);
+   
+      .player_cell,
+      .computer_cell {
+         border: 1px dashed rgba(0, 0, 0, 0.2);
+         display: grid;
+         .alignCenter ();
+      }
+
+      .activeOneDeckShip {
+         background-color: @colorShip;
+      }
+
+      .activeTwoDeckShip {
+         background-color: @colorShip;
+      }
+
+      .activeThreeDeckShip {
+         background-color: @colorShip;
+      }
+
+      .missed {
+         background-color: black;
+         width: 15px;
+         height: 15px;
+         border-radius: 50%;
+      }
+
+      
+
+   }
+
+}
+
+
+
+
+
+
